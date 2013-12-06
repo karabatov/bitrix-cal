@@ -89,9 +89,8 @@ function FitconOnAfterBuildSceleton()
 						flagVal = $( "#fitcon_project_flag" ).val();
 						$.ajax({
 							type: "GET",
-							// url: "http://<?=SITE_SERVER_NAME?>/bitrix/fitconRequestHandler.php",
-							// url: "http://localhost:6448<?=$_SERVER['REQUEST_URI']?>",
 							url: "https://portal.fitcon.ru:443<?=$_SERVER['REQUEST_URI']?>",
+                            // is this necessary?
 							data: { fitcon_project_name: nameVal, fitcon_project_flag: flagVal, 
 								   event_id:446, action: 'userfield_edit', sessid: '688bbc318e8284669b3b0433a00203eb', bx_event_calendar_request: 'Y', reqId:744150 }
 							})
@@ -112,15 +111,10 @@ function FitconOnAfterCalendarEventEdit($arFields, $bNew, $USER_ID)
 $_SESSIONS = array();
 $_SESSIONS['testing_session_start'] = 'test';
 
-
-
-$_SESSION['asd'] = 'qwe';
-
 if ($_REQUEST['fitcon_project_name']) {
 	session_start();
 	$_SESSION['fitcon_project_name'] = $_REQUEST['fitcon_project_name'];
 	$_SESSION['fitcon_project_flag'] = $_REQUEST['fitcon_project_flag'];
-	//exit('test:'.print_r($_SESSION));
 }
 
 if ($_REQUEST['fitcon_project_flag']) {
@@ -128,13 +122,6 @@ if ($_REQUEST['fitcon_project_flag']) {
 	$_SESSION['fitcon_project_name'] = $_REQUEST['fitcon_project_name'];
 	$_SESSION['fitcon_project_flag'] = $_REQUEST['fitcon_project_flag'];
 }
-
-	//$memcache_obj = memcache_connect("localhost", 11211);
-
-/* procedural API */
-	//$stats = $memcache_obj->getExtendedStats();
-
-	//$_SESSIONS['memcache'] = $stats;
 
 $f = fopen ($_SERVER['DOCUMENT_ROOT']."/bitrix/arFields.txt", "w+");
 	fwrite ($f, "STEP 1: fitcon_project_name\n");
@@ -165,6 +152,5 @@ fwrite ($f, print_r ($_REQUEST,true));
 	}
 fclose($f);	
 }
-
 
 ?>
