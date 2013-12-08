@@ -28,9 +28,9 @@ function FitconOnAfterBuildSceleton()
             'ГОА',
             'ЗУБР МЕЛОМ',
     );
-    
+
     CJSCore::Init('jquery');
-    
+
     ?>
     <script type="text/javascript">
     function loadNewDiv(){
@@ -65,6 +65,7 @@ function FitconOnAfterBuildSceleton()
                 loadNewDiv();
                 // saveButton = $( ".popup-window-button.popup-window-button-accept" );
                 // saveButton.click(function(){
+                    // use http://stackoverflow.com/questions/1506729/how-to-intercept-the-onclick-event
                     // nameVal = $( "#fitcon_project_name" ).val();
                     // flagVal = $( "#fitcon_project_flag" ).val();
                     // $.ajax({
