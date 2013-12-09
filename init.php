@@ -81,7 +81,7 @@ function FitconOnAfterBuildSceleton()
                     console.log(projectName);
                     var projectFlag = $( "#fitcon_project_form #fitcon_project_flag").val();
                     console.log(projectFlag);
-                    eventTitle.html = "[" + projectFlag + " " + projectName + "]" + eventTitle.val();
+                    eventTitle.val("[" + projectFlag + " " + projectName + "]" + eventTitle.val());
                     console.log(eventTitle.val());
 
                     //console.log("saveButton clicked, calling old click event...")
