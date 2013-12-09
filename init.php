@@ -63,9 +63,11 @@ function FitconOnAfterBuildSceleton()
         addButton.click( function() {
             window.setTimeout(function(){
                 loadNewDiv();
+                trueSaveButton = $( ".popup-window-button-accept" );
                 saveButton = $( ".popup-window-button.popup-window-button-accept" );
-                //var oldOnClick = $( ".popup-window-button.popup-window-button-accept" ).get(0).onclick;
-                saveButton.click(function(){
+                var oldOnClick = trueSaveButton.get(0).click;
+                trueSaveButton.unbind( "click" );
+                trueSaveButton.click(function (e) {
                     // use http://stackoverflow.com/questions/1506729/how-to-intercept-the-onclick-event
                     // nameVal = $( "#fitcon_project_name" ).val();
                     // flagVal = $( "#fitcon_project_flag" ).val();
@@ -81,11 +83,11 @@ function FitconOnAfterBuildSceleton()
                     console.log(projectName);
                     var projectFlag = $( "#fitcon_project_form #fitcon_project_flag").val();
                     console.log(projectFlag);
-                    eventTitle.val("[" + projectFlag + " " + projectName + "]" + eventTitle.val());
+                    eventTitle.val("[" + projectFlag + " " + projectName + "] " + eventTitle.val());
                     console.log(eventTitle.val());
 
                     //console.log("saveButton clicked, calling old click event...")
-                    //oldOnClick.call(this, e);
+                    oldOnClick.call(this, e);
                 });
                 window.setTimeout(function(){
                     projectOrFlagSelects = $( "#fitcon_project_form select" );
