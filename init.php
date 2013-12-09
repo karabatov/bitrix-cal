@@ -75,7 +75,7 @@ function FitconOnAfterBuildSceleton()
                         // url: "http://localhost:6448<?=$_SERVER['REQUEST_URI']?>",
                         // data: { fitcon_project_name: nameVal, fitcon_project_flag: flagVal }
                         // })
-                    console.log($( "#popup-window-content-BXCEditEvent .bxec-d-cont .bxec-popup-row .bxec-field-val-2 input").val())
+                    console.log($( "#popup-window-content-BXCEditEvent .bxec-popup-row .bxec-field-val-2 input:text").val())
                     console.log($( "#fitcon_project_form #fitcon_project_name").val())
                     console.log($( "#fitcon_project_form #fitcon_project_flag").val())
                     //console.log("saveButton clicked, calling old click event...")
