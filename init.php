@@ -64,7 +64,7 @@ function FitconOnAfterBuildSceleton()
             window.setTimeout(function(){
                 loadNewDiv();
                 trueSaveButton = $( ".popup-window-button-accept" );
-                var oldOnClick = trueSaveButton.get(0).click;
+                var oldOnClick = trueSaveButton.get(0).onclick;
                 trueSaveButton.unbind( "click" );
                 trueSaveButton.click(function (e) {
                     // use http://stackoverflow.com/questions/1506729/how-to-intercept-the-onclick-event
@@ -86,7 +86,7 @@ function FitconOnAfterBuildSceleton()
                     console.log(eventTitle.val());
 
                     //console.log("saveButton clicked, calling old click event...")
-                    // oldOnClick.call(this, e);
+                    oldOnClick.call(this, e);
                     return false;
                 });
                 window.setTimeout(function(){
