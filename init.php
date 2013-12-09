@@ -64,7 +64,6 @@ function FitconOnAfterBuildSceleton()
             window.setTimeout(function(){
                 loadNewDiv();
                 trueSaveButton = $( ".popup-window-button-accept" );
-                saveButton = $( ".popup-window-button.popup-window-button-accept" );
                 var oldOnClick = trueSaveButton.get(0).click;
                 trueSaveButton.unbind( "click" );
                 trueSaveButton.click(function (e) {
@@ -87,7 +86,7 @@ function FitconOnAfterBuildSceleton()
                     console.log(eventTitle.val());
 
                     //console.log("saveButton clicked, calling old click event...")
-                    oldOnClick.call(this, e);
+                    // oldOnClick.call(this, e);
                     return false;
                 });
                 window.setTimeout(function(){
