@@ -64,7 +64,7 @@ function FitconOnAfterBuildSceleton()
             window.setTimeout(function(){
                 loadNewDiv();
                 saveButton = $( ".popup-window-button.popup-window-button-accept" );
-                var oldOnClick = $( ".popup-window-button.popup-window-button-accept" ).get(0).onclick;
+                //var oldOnClick = $( ".popup-window-button.popup-window-button-accept" ).get(0).onclick;
                 saveButton.click(function(){
                     // use http://stackoverflow.com/questions/1506729/how-to-intercept-the-onclick-event
                     // nameVal = $( "#fitcon_project_name" ).val();
@@ -75,10 +75,11 @@ function FitconOnAfterBuildSceleton()
                         // url: "http://localhost:6448<?=$_SERVER['REQUEST_URI']?>",
                         // data: { fitcon_project_name: nameVal, fitcon_project_flag: flagVal }
                         // })
-                    console.log($( "#fitcon_project_form #fitcon_project_name").text())
-                    console.log($( "#fitcon_project_form #fitcon_project_flag").text())
-                    console.log("saveButton clicked, calling old click event...")
-                    oldOnClick.call(this, e);
+                    console.log($( "#popup-window-content-BXCEditEvent .bxec-d-cont .bxec-popup-row .bxec-field-val-2 input").val())
+                    console.log($( "#fitcon_project_form #fitcon_project_name").val())
+                    console.log($( "#fitcon_project_form #fitcon_project_flag").val())
+                    //console.log("saveButton clicked, calling old click event...")
+                    //oldOnClick.call(this, e);
                 });
                 window.setTimeout(function(){
                     projectOrFlagSelects = $( "#fitcon_project_form select" );
