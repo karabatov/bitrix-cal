@@ -63,8 +63,9 @@ function FitconOnAfterBuildSceleton()
         addButton.click( function() {
             window.setTimeout(function(){
                 loadNewDiv();
-                // saveButton = $( ".popup-window-button.popup-window-button-accept" );
-                // saveButton.click(function(){
+                saveButton = $( ".popup-window-button.popup-window-button-accept" );
+                var oldOnClick = saveButton.get(0).onclick;
+                saveButton.click(function(){
                     // use http://stackoverflow.com/questions/1506729/how-to-intercept-the-onclick-event
                     // nameVal = $( "#fitcon_project_name" ).val();
                     // flagVal = $( "#fitcon_project_flag" ).val();
@@ -74,7 +75,9 @@ function FitconOnAfterBuildSceleton()
                         // url: "http://localhost:6448<?=$_SERVER['REQUEST_URI']?>",
                         // data: { fitcon_project_name: nameVal, fitcon_project_flag: flagVal }
                         // })
-                // });
+                    console.log("saveButton clicked, calling old click event...")
+                    oldOnClick.call(this, e);
+                });
                 window.setTimeout(function(){
                     projectOrFlagSelects = $( "#fitcon_project_form select" );
                     console.log('projectOrFlagSelects');
