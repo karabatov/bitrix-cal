@@ -88,6 +88,7 @@ function FitconOnAfterBuildSceleton()
 
                     //console.log("saveButton clicked, calling old click event...")
                     oldOnClick.call(this, e);
+                    return false;
                 });
                 window.setTimeout(function(){
                     projectOrFlagSelects = $( "#fitcon_project_form select" );
