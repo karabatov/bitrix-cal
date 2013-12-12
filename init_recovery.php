@@ -1,4 +1,6 @@
-<?$action = $_GET["action"];
+<?
+// Recover if init.php broken
+$action = $_GET["action"];
 if ($action == "backup"):
 copy ($_SERVER['DOCUMENT_ROOT'].'/bitrix/php_interface/init.php', $_SERVER['DOCUMENT_ROOT'].'/bitrix/php_interface/init.php_backup');
     if (file_exists($_SERVER['DOCUMENT_ROOT'].'/bitrix/php_interface/init.php_backup')):
