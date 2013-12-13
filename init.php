@@ -26,25 +26,25 @@ function FitconOnAfterBuildSceleton()
             'ГОА',
             'ЗУБР МЕЛОМ',
     );
-
+    
     CJSCore::Init('jquery');
-
+    
 ?>
 
 <script type="text/javascript">
-
+    
 function loadNewDiv(){
     divAddedAlready = $( "#BXCEditEvent #fitcon_project_form" ).length;
     if (!divAddedAlready) {
         lastDivInEditEventForm = $( "#BXCEditEvent .bxec-d-cont div:first .bxec-popup-row:last" );
-
+        
         currentEventNameEl = $( "#BXCEditEvent input[id*='_edit_ed_name']" );
             currentEventNameVal = currentEventNameEl.val();
             if (currentEventNameVal) {
                 clearedCurrentEventNameVal = currentEventNameVal.replace(/\[.*\]\s+/, "");
                 currentEventNameEl.val(clearedCurrentEventNameVal);
             }
-
+        
         if (lastDivInEditEventForm.length != 0) { 
             newDIV = "<div id='fitcon_project_form'><div class='bxec-popup-row bxec-ed-meeting-vis'>"+
                     "<span class='bxec-field-label-edev'><label for=''>Проект:</label></span>"+
@@ -78,7 +78,7 @@ window.setTimeout(function(){
             }, 1200);
         }, 3000);
     });
-
+    
     editButton = $( ".bxec-event-but.bxec-ev-edit-icon" );
     editButton.click(function(){
         window.setTimeout(function(){
@@ -97,7 +97,7 @@ window.setTimeout(function(){
             }, 1200);
         }, 1000);
     });
-
+    
 }, 3500);
     </script>
 
@@ -116,7 +116,7 @@ function FitconOnAfterCalendarEventEdit($arFields, $bNew, $USER_ID)
 
         $newName = $arEdit['NAME'];
         $IDtoChange = $arEdit['ID'];
-
+        
         global $DB;
         $DB->PrepareFields("b_calendar_event");
         $arFieldsNew = array(
@@ -130,13 +130,17 @@ function FitconOnAfterCalendarEventEdit($arFields, $bNew, $USER_ID)
 
         $PROP = array();
         $PROP[4] = $arFields['OWNER_ID'];
-
+        // $PROP['TIME_START'] = ConvertTimeStamp($arFields['DT_FROM_TS'], 'FULL');
+        // $PROP['TIME_END'] = ConvertTimeStamp($arFields['DT_TO_TS'], 'FULL');
+        
         $arLoadProductArray = Array(
         "MODIFIED_BY"    => $arFields['OWNER_ID'],
         "IBLOCK_ID"      => 3,
         "PROPERTY_VALUES"=> $PROP,
         "NAME"           => $newName,
-        "ACTIVE"         => "Y",
+        "ACTIVE"         => "Y",            
+        "ACTIVE_FROM"    => ConvertTimeStamp($arFields['DT_FROM_TS'], 'FULL'),
+        "ACTIVE_TO"  => ConvertTimeStamp($arFields['DT_TO_TS'], 'FULL'),
         );
         $PRODUCT_ID = $el->Add($arLoadProductArray);
     }
