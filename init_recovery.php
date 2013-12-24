@@ -6,7 +6,7 @@ copy ($_SERVER['DOCUMENT_ROOT'].'/bitrix/php_interface/init.php', $_SERVER['DOCU
     if (file_exists($_SERVER['DOCUMENT_ROOT'].'/bitrix/php_interface/init.php_backup')):
         echo ('File created');
     else:
-        echo ('File created error');
+        echo ('File creation error');
     endif;
 elseif ($action == "recovery"):
     rename ($_SERVER['DOCUMENT_ROOT'].'/bitrix/php_interface/init.php', $_SERVER['DOCUMENT_ROOT'].'/bitrix/php_interface/init.php_error');
